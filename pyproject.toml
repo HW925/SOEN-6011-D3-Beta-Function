@@ -1,0 +1,10 @@
+[tool.pylint.main]
+ignore-paths = ['^\.venv/.*$']
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.pylint.design]
+max-attributes = 10
+max-branches = 15
+max-locals = 20

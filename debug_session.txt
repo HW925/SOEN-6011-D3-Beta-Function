@@ -1,0 +1,8 @@
+# Reproduce the debugger evidence with:
+# python3 -m pdb debug_beta.py
+# Then enter: break beta_core.beta_function, continue, p (x_value, y_value),
+# next, next, next, continue, quit
+
+from beta_core import beta_function
+
+print("B(2, 3) =", beta_function(2.0, 3.0))

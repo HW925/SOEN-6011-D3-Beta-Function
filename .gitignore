@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+*.aux
+*.log
+*.out
+tmp/
+missfont.log
+.DS_Store
+SOEN_6011_D3_Submission.zip
