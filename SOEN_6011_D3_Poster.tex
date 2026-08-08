@@ -108,8 +108,8 @@
 
     The GUI aims to be accessible through readable labels, visible focus,
     redundant text feedback, keyboard operation, and recoverable validation.
-    These choices align the interface with the user's task model
-    (Kamthan, 2026c).
+    These choices align the interface with the user's task model and established
+    usability heuristics (Kamthan, 2026c; Nielsen Norman Group, 2026).
 
     \vspace{0.35cm}
     \textbf{Exception policy:} expected input and numeric-range errors receive
@@ -123,39 +123,52 @@
   }
 
   % Centre column
-  \PosterBox{28.4}{8.0}{26.8}{13.5}{Problem 7: Style and Static Analysis}{
+  \PosterBox{28.4}{8.0}{26.8}{16.7}{Problem 7: Quality and Versioning}{
     \centering
-    \includegraphics[width=25.2cm]{assets/flake8_raw.png}
-    \par\vspace{0.22cm}
-    \includegraphics[width=25.2cm]{assets/pylint_raw.png}
+    \includegraphics[width=24.6cm]{assets/flake8_crop.jpg}
+    \par\vspace{0.18cm}
+    \includegraphics[width=24.6cm]{assets/pylint_crop.jpg}
+    \par\vspace{0.28cm}
+    \begin{minipage}[t]{12.0cm}
+      \fontsize{14}{17}\selectfont\RaggedRight
+      \textbf{Correction made:} Pylint reported
+      \texttt{too-many-public-methods} after test expansion. One oversized
+      test class was split into three focused classes, restoring
+      \textbf{10.00/10} without a global suppression.
+    \end{minipage}\hfill
+    \begin{minipage}[t]{12.4cm}
+      \centering
+      \includegraphics[width=12.2cm]{assets/version_tag_crop.jpg}
+      \par\vspace{0.12cm}
+      \fontsize{13.5}{16}\selectfont\RaggedRight
+      \textbf{Why 1.0.0:} first stable GUI and numerical contract, recorded by
+      repository tag \texttt{v1.0.0} (Semantic Versioning, 2026).
+    \end{minipage}
+  }
+
+  \PosterBox{28.4}{25.4}{26.8}{13.4}{Problem 7: Debugger Evidence}{
+    \centering
+    \includegraphics[width=24.8cm]{assets/pdb_crop.jpg}
     \par\vspace{0.24cm}
     \RaggedRight
-    Flake8 reports no PEP 8 style violations; Pylint rates the final source
-    \textbf{10.00/10}. Both outputs were generated from version 1.0.0.
-  }
-
-  \PosterBox{28.4}{22.2}{26.8}{14.7}{Problem 7: Debugger Evidence}{
-    \centering
-    \includegraphics[height=9.7cm]{assets/pdb_raw.png}
-    \par\vspace{0.3cm}
-    \RaggedRight
     A reproducible \texttt{pdb} session stops inside \texttt{beta\_function},
-    inspects $(x,y)=(2,3)$, steps through validation, and confirms the known
-    result $1/12$.
+    inspects $(x,y)=(2,3)$, and steps through finite and domain validation
+    before continuing to the known result $1/12$.
   }
 
-  \PosterBox{28.4}{37.6}{26.8}{13.5}{Verified Numerical Contract}{
+  \PosterBox{28.4}{39.5}{26.8}{11.6}{Verified Numerical Contract}{
     \centering
-    \includegraphics[width=23.5cm]{assets/accuracy_raw.png}
+    \includegraphics[width=22.0cm]{assets/accuracy_crop.jpg}
     \par\vspace{0.18cm}
     \fontsize{14}{17}\selectfont\RaggedRight
-    \textbf{Contract:} finite positive inputs produce a representable binary64
-    result or a specific range error. Twelve displayed digits are formatting,
-    not a universal accuracy claim; subnormal values follow binary64 spacing.
+    \textbf{Contract:} accepted inputs return a nonzero finite binary64 result
+    when representable; otherwise the program reports overflow or underflow.
+    Normal results in the deterministic oracle set meet $10^{-10}$ relative
+    error; subnormals follow binary64 spacing (NIST DLMF, 2026; mpmath, 2023).
   }
 
   % Right column
-  \PosterBox{56.0}{8.0}{26.6}{23.7}{UIDP Decision Mind Map}{
+  \PosterBox{56.0}{8.0}{26.6}{22.0}{UIDP Decision Mind Map}{
     \centering
     \vspace{0.45cm}
     \begin{tikzpicture}[y=1.30cm,
@@ -207,21 +220,24 @@
             (2.6,0 |- \nodeName.west) -- (\nodeName.west);
       \end{scope}
     \end{tikzpicture}
-    \vspace{1.0cm}
+    \vspace{0.55cm}
 
     The mind map records both selected and rejected principles instead of
-    treating every principle as mandatory (Kamthan, 2026d).
+    treating every principle as mandatory (Kamthan, 2026d; Nielsen Norman
+    Group, 2026).
   }
 
-  \PosterBox{56.0}{32.4}{26.6}{18.7}{Problem 8: PyUnit Test Suite}{
+  \PosterBox{56.0}{30.7}{26.6}{20.4}{Problem 8: PyUnit Test Suite}{
     \centering
-    \includegraphics[height=12.5cm]{assets/unit_tests_raw.png}
-    \par\vspace{0.25cm}
-    \RaggedRight
-    \textbf{14/14 tests pass.} Coverage includes trusted values, symmetry,
-    extreme asymmetric inputs, the roundable subnormal boundary, scientific
-    notation, invalid input, underflow, and propagation of unexpected
-    arithmetic errors. The tests exercise the final numerical core and parser.
+    \includegraphics[width=24.0cm]{assets/unit_tests_values_crop.jpg}
+    \par\vspace{0.18cm}
+    \includegraphics[width=24.0cm]{assets/unit_tests_limits_crop.jpg}
+    \par\vspace{0.22cm}
+    \fontsize{14}{17}\selectfont\RaggedRight
+    \textbf{21/21 tests pass.} Coverage includes trusted values,
+    $B(1,y)=1/y$, $B(x,1)=1/x$, symmetry, the D3 large-input regression,
+    separate x/y domain errors, NaN/infinity, overflow, underflow, and both
+    sides of the subnormal rounding boundary.
   }
 
   % Footer: GAI use and references
@@ -233,26 +249,31 @@
     {\begin{minipage}[t]{39.2cm}
       \fontsize{15.5}{18.5}\selectfont\RaggedRight
       \textbf{Generative AI and CASTROFF.} Tool: OpenAI ChatGPT/Codex.
-      Problem 7 prompt: ``Review the stable log-beta code for PEP 8, Flake8,
-      pdb, Pylint, SemVer, UIDP, accessibility, and honest range behavior.''
-      Problem 8 prompt: ``Propose PyUnit regressions for large inputs,
-      subnormal rounding, invalid input, and unexpected exceptions.''
-      Context: SOEN 6011 D3; Audience: TA/instructor; Style: concise; Task:
-      review; Role: student engineer; Output: suggestions; Format: poster
-      checklist; Feedback: accept only after execution. Suggestions were
-      revised and verified; unverified claims were rejected.
+      \textbf{Constraints:} preserve from-scratch code and honest range claims;
+      \textbf{Audience:} TA/instructor; \textbf{Structure:} evidence by
+      Problems 7 and 8; \textbf{Tone:} concise and technical; \textbf{Role:}
+      graduate student reviewer; \textbf{Output format:} code/test suggestions
+      and poster statements; \textbf{Focus:} quality, accessibility, binary64
+      boundaries, and regression coverage; \textbf{Function:} identify missing
+      evidence and unsupported claims. Example prompts requested a PEP 8 and
+      range-behaviour review and focused PyUnit regressions. Suggestions were
+      executed and revised; unverified claims were rejected. Full records are
+      in \texttt{GAI\_USAGE.md}.
     \end{minipage}};
   \node[anchor=north west,text=white,inner sep=0pt]
     at ([xshift=43.1cm,yshift=-52.55cm]current page.north west)
     {\begin{minipage}[t]{38.3cm}
       \fontsize{15.5}{18.5}\selectfont\RaggedRight
       \textbf{References.} Kamthan, P. (2026a), \textit{SOEN 6011 Project
-      Description}. Kamthan, P. (2026b), \textit{Building, Versioning, and
-      Releasing Software}. Kamthan, P. (2026c), \textit{Introduction to Mental
-      Models}. Kamthan, P. (2026d), \textit{Brainstorming and Mind Mapping}.
-      Van Rossum, G., Warsaw, B., and Coghlan, N. (2001), \textit{PEP 8 -- Style
-      Guide for Python Code}. Python Software Foundation (2026),
-      \textit{unittest and pdb Documentation}.
+      Description}; Kamthan, P. (2026b), \textit{Building, Versioning, and
+      Releasing Software}; Kamthan, P. (2026c), \textit{Introduction to Mental
+      Models}; Kamthan, P. (2026d), \textit{Brainstorming and Mind Mapping};
+      Nielsen Norman Group (2026), \textit{Ten Usability Heuristics}; Semantic
+      Versioning (2026), \textit{Semantic Versioning 2.0.0}; NIST DLMF (2026),
+      \textit{Section 5.12: Beta Function}; mpmath (2023), \textit{mpmath 1.3.0
+      Documentation}; Van Rossum, Warsaw, and Coghlan (2001), \textit{PEP 8};
+      Python Software Foundation (2026), \textit{unittest and pdb
+      Documentation}.
 
       \vspace{0.35cm}
       \textbf{Repository:}

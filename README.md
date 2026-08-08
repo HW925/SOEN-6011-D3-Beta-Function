@@ -105,6 +105,13 @@ backward-compatible features increment the minor number, bug fixes increment
 the patch number, and incompatible interface or contract changes increment the
 major number.
 
+## Reference material
+
+- [NIST DLMF, Section 5.12: Beta Function](https://dlmf.nist.gov/5.12)
+- [mpmath 1.3.0 documentation](https://mpmath.org/doc/current/)
+- [Nielsen Norman Group usability heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/)
+- [Semantic Versioning 2.0.0](https://semver.org/)
+
 ## Files
 
 - `beta_core.py`: from-scratch numerical implementation
