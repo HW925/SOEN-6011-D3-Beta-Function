@@ -254,7 +254,12 @@ def log_beta(x_value, y_value):
 
 
 def beta_function(x_value, y_value):
-    """Return B(x, y) for finite positive real inputs."""
+    """Return a representable binary64 B(x, y) for valid inputs.
+
+    Finite positive binary64 inputs are supported. If the mathematical result
+    cannot be represented as a nonzero finite Python float, the function
+    raises NumericRangeError instead of returning a misleading value.
+    """
     if not is_finite(x_value):
         raise InputValidationError("x must be finite.")
     if not is_finite(y_value):

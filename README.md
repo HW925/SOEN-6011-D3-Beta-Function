@@ -5,6 +5,9 @@ calculator. It keeps the numerical core independent of mathematical libraries,
 adds accessibility-oriented keyboard controls, and provides quality-tool,
 debugger, and unit-test evidence.
 
+The release contract is maintained in [`REQUIREMENTS.md`](REQUIREMENTS.md),
+and the release history is recorded in [`CHANGELOG.md`](CHANGELOG.md).
+
 Public repository:
 [https://github.com/HW925/SOEN-6011-D3-Beta-Function](https://github.com/HW925/SOEN-6011-D3-Beta-Function)
 
@@ -37,8 +40,9 @@ unexpected arithmetic errors remain visible for diagnosis.
 
 - The parser accepts decimal or scientific-notation text that converts to a
   finite positive Python float.
-- A calculation returns a representable binary64 result or an explicit
-  numeric-range error.
+- For accepted inputs, a calculation returns a nonzero finite binary64 result
+  when that result is representable. Otherwise, it raises an explicit
+  numeric-range error for overflow or underflow.
 - Twelve displayed significant digits are an output format, not a universal
   claim of twelve-digit numerical accuracy.
 - The published accuracy evidence uses 500 deterministic cases from `1e-12`
@@ -59,7 +63,10 @@ python3 -m venv .venv
 ```
 
 The final release has no Flake8 findings and receives a Pylint score of
-`10.00/10`.
+`10.00/10`. During the final test expansion, Pylint reported
+`too-many-public-methods` for one oversized test class. The tests were divided
+into value, numerical-boundary, and interface/input classes, restoring focused
+test responsibilities and the `10.00/10` result without a global suppression.
 
 ## Debugger
 
@@ -76,10 +83,10 @@ snapshot of a breakpoint inside `beta_function` while evaluating `B(2, 3)`.
 python3 -m unittest -v
 ```
 
-The fourteen PyUnit tests cover known values, symmetry, extreme asymmetric
-inputs, the subnormal exponential boundary, scientific notation, nonnumeric
-and nonfinite input, domain validation, underflow reporting, and propagation of
-unexpected arithmetic failures.
+The twenty-one PyUnit tests cover known values, both unit-argument identities,
+symmetry, a large-input regression, the subnormal boundary, scientific
+notation, separate x/y domain failures, NaN and infinity, overflow and
+underflow reporting, and propagation of unexpected arithmetic failures.
 
 ## External accuracy verification
 
@@ -92,16 +99,20 @@ precision. It is not imported by the submitted numerical core.
 
 ## Semantic Versioning
 
-The current release is `1.0.0`: the first stable D3 interface. Future
+The current release is `1.0.0`: the first stable D3 interface and numerical
+contract. It is marked by the repository tag `v1.0.0`. Future
 backward-compatible features increment the minor number, bug fixes increment
-the patch number, and incompatible interface changes increment the major
-number.
+the patch number, and incompatible interface or contract changes increment the
+major number.
 
 ## Files
 
 - `beta_core.py`: from-scratch numerical implementation
 - `beta_function_gui.py`: Tkinter GUI
 - `test_beta_core.py`: PyUnit tests
+- `REQUIREMENTS.md`: supported numerical and interface contract
+- `CHANGELOG.md`: Semantic Versioning history
+- `GAI_USAGE.md`: full CASTROFF records and verification decisions
 - `verify_accuracy.py`: external high-precision verification
 - `debug_beta.py` and `debug_session.txt`: debugger demonstration
 - `SOEN_6011_D3_Poster.tex`: poster source
