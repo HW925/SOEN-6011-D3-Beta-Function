@@ -81,12 +81,12 @@
   % Left column
   \PosterBox{1.5}{8.0}{26.1}{27.0}{Final Graphical Interface}{
     \centering
-    \includegraphics[width=24.8cm]{assets/gui_raw.png}
+    \includegraphics[width=24.8cm]{assets/gui_user.jpg}
     \par\vspace{0.35cm}
     \RaggedRight
-    The live interface demonstrates a known value, visible calculation status,
-    and persistent history. Native Tkinter widgets preserve familiar focus and
-    tab behavior.
+    The live interface shows a field-specific nonnumeric-input message while
+    preserving earlier successful calculations. The user can correct the input
+    and continue; native Tkinter widgets retain familiar focus and tab behavior.
   }
 
   \PosterBox{1.5}{35.7}{26.1}{15.4}{Accessibility and Recovery}{
@@ -146,17 +146,17 @@
     \end{minipage}
   }
 
-  \PosterBox{28.4}{25.4}{26.8}{13.4}{Problem 7: Debugger Evidence}{
+  \PosterBox{28.4}{25.4}{26.8}{14.4}{Problem 7: Debugger Evidence}{
     \centering
-    \includegraphics[width=24.8cm]{assets/pdb_crop.jpg}
+    \includegraphics[width=22.5cm]{assets/pdb_crop.jpg}
     \par\vspace{0.24cm}
-    \RaggedRight
+    \fontsize{14}{17}\selectfont\RaggedRight
     A reproducible \texttt{pdb} session stops inside \texttt{beta\_function},
     inspects $(x,y)=(2,3)$, and steps through finite and domain validation
     before continuing to the known result $1/12$.
   }
 
-  \PosterBox{28.4}{39.5}{26.8}{11.6}{Verified Numerical Contract}{
+  \PosterBox{28.4}{40.5}{26.8}{10.6}{Verified Numerical Contract}{
     \centering
     \includegraphics[width=22.0cm]{assets/accuracy_crop.jpg}
     \par\vspace{0.18cm}
@@ -229,9 +229,9 @@
 
   \PosterBox{56.0}{30.7}{26.6}{20.4}{Problem 8: PyUnit Test Suite}{
     \centering
-    \includegraphics[width=24.0cm]{assets/unit_tests_values_crop.jpg}
+    \includegraphics[width=23.0cm]{assets/unit_tests_values_crop.jpg}
     \par\vspace{0.18cm}
-    \includegraphics[width=24.0cm]{assets/unit_tests_limits_crop.jpg}
+    \includegraphics[width=23.0cm]{assets/unit_tests_limits_crop.jpg}
     \par\vspace{0.22cm}
     \fontsize{14}{17}\selectfont\RaggedRight
     \textbf{21/21 tests pass.} Coverage includes trusted values,
