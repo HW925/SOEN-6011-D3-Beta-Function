@@ -123,40 +123,41 @@
   }
 
   % Centre column
-  \PosterBox{28.4}{8.0}{26.8}{16.7}{Problem 7: Quality and Versioning}{
+  \PosterBox{28.4}{8.0}{26.8}{12.5}{Problem 7: Quality and Versioning}{
     \centering
     \includegraphics[width=24.6cm]{assets/flake8_crop.jpg}
     \par\vspace{0.18cm}
     \includegraphics[width=24.6cm]{assets/pylint_crop.jpg}
-    \par\vspace{0.28cm}
+    \par\vspace{0.40cm}
     \begin{minipage}[t]{12.0cm}
       \fontsize{14}{17}\selectfont\RaggedRight
       \textbf{Correction made:} Pylint reported
-      \texttt{too-many-public-methods} after test expansion. One oversized
-      test class was split into three focused classes, restoring
-      \textbf{10.00/10} without a global suppression.
+      \texttt{too-many-public-methods}. Splitting one oversized test class
+      into three focused classes restored \textbf{10.00/10} without
+      suppressing the rule.
     \end{minipage}\hfill
     \begin{minipage}[t]{12.4cm}
       \centering
       \includegraphics[width=12.2cm]{assets/version_tag_crop.jpg}
       \par\vspace{0.12cm}
       \fontsize{13.5}{16}\selectfont\RaggedRight
-      \textbf{Why 1.0.0:} first stable GUI and numerical contract, recorded by
-      repository tag \texttt{v1.0.0} (Semantic Versioning, 2026).
+      \textbf{Why 1.0.0:} the first stable GUI and numerical contract,
+      recorded by repository tag \texttt{v1.0.0}
+      (Semantic Versioning, 2026).
     \end{minipage}
   }
 
-  \PosterBox{28.4}{25.4}{26.8}{14.4}{Problem 7: Debugger Evidence}{
+  \PosterBox{28.4}{21.2}{26.8}{17.1}{Problem 7: Debugger Evidence}{
     \centering
     \includegraphics[width=22.5cm]{assets/pdb_crop.jpg}
-    \par\vspace{0.24cm}
-    \fontsize{14}{17}\selectfont\RaggedRight
-    A reproducible \texttt{pdb} session stops inside \texttt{beta\_function},
-    inspects $(x,y)=(2,3)$, and steps through finite and domain validation
-    before continuing to the known result $1/12$.
+    \par\vspace{0.20cm}
+    \fontsize{13.5}{16}\selectfont\RaggedRight
+    At a breakpoint in \texttt{beta\_function}, \texttt{pdb} inspects
+    $(x,y)=(2,3)$ and steps through the finite and domain checks before
+    confirming $B(2,3)=1/12$.
   }
 
-  \PosterBox{28.4}{40.5}{26.8}{10.6}{Verified Numerical Contract}{
+  \PosterBox{28.4}{39.0}{26.8}{12.1}{Verified Numerical Contract}{
     \centering
     \includegraphics[width=22.0cm]{assets/accuracy_crop.jpg}
     \par\vspace{0.18cm}
